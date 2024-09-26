@@ -1,8 +1,8 @@
 ########################################
-# Name:
-# Collaborators (if any):
+# Name: Gazi Shuraim Niloy
+# Collaborators (if any): Sam Holmes
 # GenAI Transcript (if any):
-# Estimated time spent (hr):
+# Estimated time spent (hr): 20 mins
 # Description of any added extensions:
 ########################################
 
@@ -21,7 +21,8 @@ def wordle():
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
 
-
+    
+    
 
 
 # Startup boilerplate
