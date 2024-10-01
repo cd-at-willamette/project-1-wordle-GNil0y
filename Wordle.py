@@ -49,7 +49,8 @@ def check_answer(gw, row, secret_word):
     # First pass for correct (green) letters
     for x in range(len(user_words)):
         if user_words[x] == secret_words[x]:
-            gw.set_square_color(row, x, CORRECT_COLOR)  
+            gw.set_square_color(row, x, CORRECT_COLOR) 
+            gw.set_key_color(user_words[x], CORRECT_COLOR) 
             remaining_letters[x] = None  
 
     # Second pass for present (yellow) and missing (grey) letters
@@ -58,9 +59,14 @@ def check_answer(gw, row, secret_word):
             continue
         elif user_words[x] in remaining_letters:
             gw.set_square_color(row, x, PRESENT_COLOR)
+            
+            if gw.get_key_color(user_words[x]) != CORRECT_COLOR:
+               gw.set_key_color(user_words[x], PRESENT_COLOR)
+    
             remaining_letters[remaining_letters.index(user_words[x])] = None  
         else:
             gw.set_square_color(row, x, MISSING_COLOR)
+            gw.set_key_color(user_words[x], MISSING_COLOR)
 
     new_row=gw.get_current_row()+1
     gw.set_current_row(new_row)
@@ -69,7 +75,9 @@ def check_answer(gw, row, secret_word):
     if user_words == secret_words:
         gw.show_message("You win!")
 
-        
+      
+   
+
 
 
 # Startup boilerplate
